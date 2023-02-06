@@ -1,11 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>DragonCore.ElasticSearchHelper</PackageId>
+    <Authors>https://github.com/Lizardon09</Authors>
+	<Version>1.0.0</Version>
+	<Description>A high level NEST library extension that provides generalised query based interactions with Elastic, alongside basic elastic interactions.</Description>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	<PackageProjectUrl>https://github.com/Lizardon09/ElasticSearchHelper</PackageProjectUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/Lizardon09/ElasticSearchHelper</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\licenses\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Elasticsearch.Net" Version="7.17.5" />

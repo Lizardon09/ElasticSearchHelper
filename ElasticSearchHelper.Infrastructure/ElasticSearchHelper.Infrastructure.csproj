@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageId>DragonCore.ElasticSearchHelper</PackageId>
     <Authors>https://github.com/Lizardon09</Authors>
-	<Version>1.0.1</Version>
+	<Version>1.0.2</Version>
 	<Description>A high level NEST library extension that provides generalised query based interactions with Elastic, alongside basic elastic interactions.</Description>
 	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 	<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -32,11 +32,16 @@
     <PackageReference Include="NEST" Version="7.17.5" />
   </ItemGroup>
 
-    <ItemGroup>
-	    <ProjectReference Include="..\ElasticSearchHelper\ElasticSearchHelper.Domain.csproj">
-		    <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-		    <IncludeAssets>{ElasticSearchHelper.Domain}.dll</IncludeAssets>
-	    </ProjectReference>
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElasticSearchHelper.Domain\ElasticSearchHelper.Domain.csproj" PrivateAssets="all"/>
+  </ItemGroup>
+    <PropertyGroup>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    </PropertyGroup>
+    <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+        <ItemGroup>
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
+        </ItemGroup>
+    </Target>
 
 </Project>
